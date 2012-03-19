@@ -33,7 +33,7 @@ object SbtGitInfo extends sbt.Plugin {
     IO.createDirectory(resources)
     val file = resources / "git.properties"
     Using.fileWriter()(file)(props.store(_, "Build info"))
-    s.log.info("Last commit: "+commit.getShortMessage)
+    s.log.info("Recording last commit: "+commit.getShortMessage)
     Seq(file)
   }
 }
