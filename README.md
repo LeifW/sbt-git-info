@@ -12,7 +12,7 @@ And this to your build.sbt:
 
 `net.leifwarner.SbtGitInfo.setting`
 
-Or do something like this: https://github.com/guardian/sbt-version-info-plugin
+Alternatively, you could add it as a dep by referencing the git repo as a subproject, like so: https://github.com/guardian/sbt-version-info-plugin
 
 I'll work on putting this in a maven repo in a little bit, so won't need those first two steps.
 
@@ -32,7 +32,7 @@ if (file != null ) {
 // From this point, you can say properties.get("git.branch") to read attributes one at a time, 
 //or do something like the following to convert it into a Scala Map:
 import collection.JavaConversions.enumerationAsScalaIterator
-val props = Map(properties.propertyNames map {case k:String => k -> properties.get(k).asInstanceOf[String] } toSeq : _*)
+val props = properties.propertyNames map {case k:String => k -> properties.get(k).asInstanceOf[String] } toMap
 
 // From there you can say things like props("git.branch")
 ```
