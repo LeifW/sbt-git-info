@@ -30,9 +30,10 @@ if (file != null ) {
   file.close
 }
 // From this point, you can say properties.get("git.branch") to read attributes one at a time, 
-//or do something like the following to convert it into a Scala Map:
-import collection.JavaConversions.enumerationAsScalaIterator
-val props = properties.propertyNames map {case k:String => k -> properties.get(k).asInstanceOf[String] } toMap
+// or to use the properties as a Scala Map[String, String], you can import the implicit conversion:
+import scala.collection.JavaConversions.propertiesAsScalaMap
+// Apply it explicitly if you want:
+val props = propertiesAsScalaMap(properties)
 
 // From there you can say things like props("git.branch")
 ```
