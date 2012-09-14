@@ -22,7 +22,7 @@ This will generate a `git.properties` file in the classpath of the generated .ja
 // Properties files are widely documented elsewhere, and accesible from any langauge on the JVM
 val properties = new java.util.Properties
 // Open an InputStream of the file off the classpath
-val file = getClass.getClassLoader.getResourceAsStream("git.properties")
+val file = getClass.getResourceAsStream("git.properties")
 // if the file exists
 if (file != null ) { 
   // Parse / read the file in
